@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_teachingload_subject,teachingload.subject,model_teachingload_subject,base.group_user,1,1,1,1
+access_teachingload_classes,teachingload.classes,model_teachingload_classes,base.group_user,1,1,1,1
+access_teachingload_teacher,teachingload.teacher,model_teachingload_teacher,base.group_user,1,1,1,1
+access_teachingload_section_load,teachingload.section.load,model_teachingload_sectionload,base.group_user,1,1,1,1
+access_teachingload_course,teachingload.course,model_teachingload_course,base.group_user,1,1,1,1
+access_teachingload_schedule,teachingload.schedule,model_teachingload_schedule,base.group_user,1,1,1,1

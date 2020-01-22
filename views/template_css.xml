@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="custom theme" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/teaching_load/static/src/css/teaching_load.css"/>
+<!--            <script src="/teaching_load/static/src/js/jquery-1.12.4.js"></script>-->
+            <script src="/teaching_load/static/src/js/jquery-ui.js"></script>
+            <script src="/teaching_load/static/src/js/teaching_load.js"></script>
+        </xpath>
+    </template>
+</odoo>

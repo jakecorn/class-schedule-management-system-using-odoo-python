@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="teaching_load.tree_section_load">
+          <field name="name">Section Load</field>
+          <field name="model">teachingload.sectionload</field>
+          <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="course_id"/>
+                <field name="year"/>
+                <field name="section"/>
+                <field name="course_id"/>
+            </tree>
+          </field>
+        </record>
+
+        <record model="ir.ui.view" id="teaching_load.form_section_load">
+          <field name="name">Section List</field>
+          <field name="model">teachingload.sectionload</field>
+          <field name="arch" type="xml">
+            <form string="Class List">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="course_id"/>
+                        <field name="year"/>
+                        <field name="section"/>
+                    </group>
+                    <notebook>
+<!--                        <page name="Subject" string="Subjects">-->
+<!--                            <field name="course_id['subject_ids']"/>-->
+<!--                        </page>-->
+                        <page name="Classes" string="Classes">
+                            <field name="classes_ids"/>
+                            <field name="schedule_iframe" widget="html"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+          </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="teaching_load.action_window_section_load">
+          <field name="name">Section Loading</field>
+          <field name="res_model">teachingload.sectionload</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Section Load" id="teaching_load.sectionload" parent="teaching_load.menu_root" action="teaching_load.action_window_section_load"/>
+    </data>
+</odoo>

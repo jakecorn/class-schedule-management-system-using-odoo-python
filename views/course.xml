@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="teaching_load.tree_course">
+          <field name="name">Course Load</field>
+          <field name="model">teachingload.course</field>
+          <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+          </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="teaching_load.action_window_course">
+          <field name="name">Course List</field>
+          <field name="res_model">teachingload.course</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Courses" id="teaching_load.course" parent="teaching_load.menu_root" action="teaching_load.action_window_course"/>
+    </data>
+</odoo>

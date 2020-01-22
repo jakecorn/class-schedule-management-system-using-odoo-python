@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="teaching_load.tree_teacher">
+          <field name="name">Teacher List</field>
+          <field name="model">teachingload.teacher</field>
+          <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="Highest_degree"/>
+                <field name="classes_ids"/>
+            </tree>
+          </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="teaching_load.action_window_teacher">
+          <field name="name">Teacher List</field>
+          <field name="res_model">teachingload.teacher</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Teachers" id="teaching_load.teacher" parent="teaching_load.menu_root" action="teaching_load.action_window_teacher"/>
+    </data>
+</odoo>

@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="teaching_load.tree_classes">
+          <field name="name">Class List</field>
+          <field name="model">teachingload.classes</field>
+          <field name="arch" type="xml">
+            <tree>
+
+                <field name="subject_id"/>
+                <field name="subject_id"/>
+                <field name="section"/>
+                <field name="sectionload_id" string="Class/Students"/>
+                <field name="teacher"/>
+            </tree>
+          </field>
+        </record>
+
+        <record model="ir.ui.view" id="teaching_load.form_classes">
+          <field name="name">Class Listssss</field>
+          <field name="model">teachingload.classes</field>
+          <field name="arch" type="xml">
+              <form string="Class Form">
+                  <sheet>
+                      <group>
+                          <field name="subject_id"/>
+                          <field name="section"/>
+                          <field name="sectionload_id" string="Class/Students"/>
+                          <field name="teacher"/>
+                      </group>
+                      <notebook>
+                        <page name="schedule" string="Schedule">
+                          <field name="schedule_iframe" widget="html"/>
+                        </page>
+                      </notebook>
+                  </sheet>
+              </form>
+
+          </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="teaching_load.action_window_classes">
+          <field name="name">Class List</field>
+          <field name="res_model">teachingload.classes</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Classes" id="teaching_load.classes" parent="teaching_load.menu_root" action="teaching_load.action_window_classes"/>
+    </data>
+</odoo>

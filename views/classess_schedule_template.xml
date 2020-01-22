@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="classes_schedule_template" name="Registration">
+        <t>
+             <div class="container">
+                  <div class="row ">
+                       <div>
+                           <table id="time_schedule" t-att-classes-id="classes.id">
+                               <thead>
+                               <tr>
+                                   <th>Time</th>
+                                   <th class="day-label" name="M">Monday</th>
+                                   <th class="day-label" name="T">Tuesday</th>
+                                   <th class="day-label" name="W">Wednesday</th>
+                                   <th class="day-label" name="TH">Thurday</th>
+                                   <th class="day-label" name="F">Friday</th>
+                                   <th class="day-label" name="SAT">Saturday</th>
+                                   <th class="day-label" name="SUN">Sunday</th>
+                               </tr>
+                               </thead>
+
+                               <tbody>
+
+                                    <t t-foreach="range(7,24)" t-as="hour">
+                                        <t t-set="start_time" t-value="str(hour)+'.0'"/>
+                                        <t t-set="end_time" t-value="str(hour)+'.5'"/>
+                                        <tr class="time-row">
+                                             <td class="time-label" t-att-name="start_time+'-'+end_time"><t t-esc="start_time.replace('.',':')+'-'+end_time.replace('.5',':30')"/></td>
+                                             <td colspan="7">
+                                                 <table id="time_table">
+                                                     <tr class="time">
+                                                          <t t-set="days"  t-value="['M','T','W','TH','F','SAT','SUN']"/>
+                                                          <t t-foreach="days" t-as="day">
+                                                              <t t-set="is_day_selected"  t-value="0"/>
+                                                              <t t-foreach="classes.schedule" t-as="schedule">
+                                                                  <t t-if="schedule.day == day and (str(schedule.start_time) == str(start_time) or str(schedule.end_time) == str(end_time))">
+                                                                    <td class="selected-time"><t t-esc="classes.subject_id.code"/>-<t t-esc="classes.section"/></td>
+                                                                      <t t-set="is_day_selected"  t-value="1"/>
+                                                                  </t>
+                                                              </t>
+                                                              <t t-if="is_day_selected == 0">
+                                                                  <td></td>
+                                                              </t>
+                                                          </t>
+                                                     </tr>
+                                                 </table>
+                                             </td>
+                                        </tr>
+
+                                        <tr class="time-row">
+                                            <t t-set="start_time2" t-value="str(hour)+'.5'"/>
+                                            <t t-set="end_time2" t-value="str(hour+1)+'.0'"/>
+                                             <td class="time-label" t-att-name="start_time2+'-'+end_time2"><t t-esc="start_time2.replace('.5',':30')+'-'+end_time2.replace('.',':')"/></td>
+                                             <td colspan="7">
+                                                 <table id="time_table">
+                                                     <tr class="time">
+                                                          <t t-set="days"  t-value="['M','T','W','TH','F','SAT','SUN']"/>
+                                                          <t t-foreach="days" t-as="day">
+                                                              <t t-set="is_day_selected"  t-value="0"/>
+                                                              <t t-foreach="classes.schedule" t-as="schedule">
+                                                                  <t t-if="schedule.day == day and ( float(schedule.end_time) == float(end_time2) or (float(schedule.start_time) &lt; float(start_time2) and float(schedule.end_time) &gt; float(end_time2)) ) ">
+                                                                    <td class="selected-time"><t t-esc="str(schedule.end_time)"/> - <t t-esc="str(end_time2)"/>UP</td>
+                                                                      <t t-set="is_day_selected"  t-value="1"/>
+                                                                  </t>
+                                                              </t>
+                                                              <t t-if="is_day_selected == 0">
+                                                                  <td></td>
+                                                              </t>
+                                                          </t>
+                                                     </tr>
+                                                 </table>
+                                             </td>
+                                        </tr>
+                                   </t>
+                               </tbody>
+                           </table>
+                           <button onclick="save_class_schedule()">Change Schedule</button>
+                       </div>
+                  </div>
+             </div>
+        </t>
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/teaching_load/static/src/css/teaching_load.css"/>
+            <script src="/teaching_load/static/src/js/jquery-1.12.4.js"></script>
+            <script src="/teaching_load/static/src/js/jquery-ui.js"></script>
+            <script src="/teaching_load/static/src/js/teaching_load.js"></script>
+        </xpath>
+    </template>
+</odoo>

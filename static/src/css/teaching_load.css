@@ -1,0 +1,46 @@
+#time_schedule td, #time_schedule th{
+    border:1px solid gray;
+    margin:0px;
+}
+
+#time_schedule{
+    border-collapse: collapse;
+    margin:auto;
+    font-family: "Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+}
+
+#time_schedule #time_table{
+    border-collapse: collapse;
+}
+
+#time_schedule #time_table td{
+    border:none;
+    border-right:1px solid #dee2e6 ;
+}
+
+#time_schedule #time_table td:last-child{
+    border:none;
+}
+
+#time_schedule #time_table .selected-time{
+    background:#00c97f7a;
+    border:1px solid #c97f7a
+}
+
+#time_schedule th {
+  width:120px
+}
+
+#time_schedule .time td {
+  width:120px;
+  height:25px
+}
+
+
+#time_schedule .ui-selecting {
+    background: #ccc;
+}
+
+#time_schedule .ui-selected {
+    background: #a9c8ff;
+}

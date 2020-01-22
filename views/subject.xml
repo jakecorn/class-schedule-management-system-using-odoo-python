@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="teaching_load.tree_subject">
+          <field name="name">Subject List</field>
+          <field name="model">teachingload.subject</field>
+          <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="description"/>
+                <field name="units"/>
+                <field name="number_of_hours"/>
+                <field name="is_major"/>
+            </tree>
+          </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="teaching_load.form_subject">
+          <field name="name">Subject List</field>
+          <field name="model">teachingload.subject</field>
+          <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="description"/>
+                        <field name="units"/>
+                        <field name="number_of_hours" widget="float_time"/>
+                        <field name="is_major"/>
+                    </group>
+                </sheet>
+            </form>
+          </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="teaching_load.action_window_subject">
+          <field name="name">Subject List</field>
+          <field name="res_model">teachingload.subject</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Subjects" id="teaching_load.subject" parent="teaching_load.menu_root" action="teaching_load.action_window_subject"/>
+    </data>
+</odoo>

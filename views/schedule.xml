@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="teaching_load.tree_schedule">
+          <field name="name">Schedule List</field>
+          <field name="model">teachingload.schedule</field>
+          <field name="arch" type="xml">
+            <tree>
+                <field name="day"/>
+                <field name="start_time" widget="float_time"/>
+                <field name="end_time" widget="float_time"/>
+                <field name="classes_id"/>
+            </tree>
+          </field>
+        </record>
+
+        <record model="ir.ui.view" id="teaching_load.form_schedule">
+          <field name="name">Schedule List</field>
+          <field name="model">teachingload.schedule</field>
+          <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="day"/>
+                        <field name="start_time"/>
+                        <field name="end_time"/>
+                        <field name="classes_id"/>
+                    </group>
+                </sheet>
+            </form>
+          </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="teaching_load.action_window_schedule">
+          <field name="name">Schedule List</field>
+          <field name="res_model">teachingload.schedule</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Schedules" id="teaching_load.schedule" parent="teaching_load.menu_root" action="teaching_load.action_window_schedule"/>
+    </data>
+</odoo>
